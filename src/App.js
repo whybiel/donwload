@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import * as S from "./style"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const urlDonwload = "https://speed.hetzner.de/100MB.bin"
 
-export default App;
+export default function App(){
+  const [donwload, setDonwload] = useState('')
+  const [count, setCount] = useState('')
+
+  const handleDonwload =()=>{
+    setDonwload(urlDonwload)
+    setCount((old)=> old + 1)
+  }
+  
+  return(
+    <S.Container>
+      <S.GlobalStyle/>
+      <S.BoxContent>
+        <h1>Clique para fazer o <S.Span>Donwload</S.Span></h1>
+        <S.P>Isso é apenas um teste para prática de donwload de arquivos pelo React!</S.P>
+        <S.Btn onClick={()=>{handleDonwload()}}>Donwload</S.Btn>
+        {donwload && <iframe title="none" style={{display:"none"}} src={donwload + "?c=" + count}/>}
+      </S.BoxContent>
+      
+    </S.Container>
+  )
+} 
