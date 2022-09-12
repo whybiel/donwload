@@ -40,6 +40,10 @@ export const BoxContent = styled.div`
     @media (max-width:850px) {
         width: 50%;
     }
+
+    @media (max-width:650px) {
+        width: 80%;
+    }
 `
 
 export const Span = styled.span`
